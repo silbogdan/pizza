@@ -2,45 +2,34 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace Pizza.Models
 {
     public partial class PizzaContext : DbContext
     {
-        public PizzaContext()
-        {
-        }
 
         public PizzaContext(DbContextOptions<PizzaContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<OrderInfo> OrderInfos { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Name=ConnectionStrings:Pizza");
-            }
-        }
+        public virtual DbSet<OrderInfo> OrderInfo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.Entity<OrderInfo>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Order_In__C3905BCF27EE4A0D");
+                    .HasName("PK__Order_In__C3905BCF0E2289F8");
 
                 entity.ToTable("Order_Info");
 
                 entity.Property(e => e.OrderId).ValueGeneratedNever();
 
-                entity.Property(e => e.Adress)
+                entity.Property(e => e.DeliveryAddress)
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);

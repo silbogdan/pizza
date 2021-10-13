@@ -3,11 +3,12 @@ import './OrderPage.css';
 
 export const OrderPage = () => {
     const [order, setOrder] = useState({
-        pizzaType: 'Quattro Formaggi',
+        PizzaType: 'Quattro Formaggi',
         firstName: '',
         lastName: '',
+        phone: '',
         email: '',
-        adress: '',
+        address: '',
         options: ''
     });
 
@@ -16,6 +17,12 @@ export const OrderPage = () => {
         setOrder((order) => (
             { ...order, [type]: targetValue }
         ));
+    }
+
+    const postOrder = (event) => {
+        event.preventDefault();
+
+        
     }
 
     return (
@@ -39,12 +46,15 @@ export const OrderPage = () => {
                 <label for="email">Email:</label>
                 <input value={order.email} id="email" type="text" onChange={(event) => handleChange(event, 'email')}></input>
 
+                <label for="phone">Phone:</label>
+                <input value={order.phone} id="phone" type="text" onChange={(event) => handleChange(event, 'phone')}></input>
+
                 <label for="address">Address:</label>
-                <input value={order.adress} id="address" type="text" onChange={(event) => handleChange(event, 'adress')}></input>
+                <textarea value={order.adress} id="address" style={{ minHeight: '50px' }} type="text" onChange={(event) => handleChange(event, 'adress')}></textarea>
 
                 <label for="options">Options:</label>
-                <input value={order.options} id="options" type="text" onChange={(event) => handleChange(event, 'options')}></input>
-                <button className="orderButton">Send order</button>
+                <textarea value={order.options} id="options" style={{ minHeight: '50px' }} type="text" onChange={(event) => handleChange(event, 'options')}></textarea>
+                <button className="orderButton" onClick={(event) => postOrder(event)}>Send order</button>
             </form> 
       </div>
     );

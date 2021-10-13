@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pizza.Models;
+//using Pizza.Models;
 
 namespace Pizza
 {
@@ -27,8 +27,8 @@ namespace Pizza
             var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("Pizza"));
             _connection = builder.ConnectionString;
 
-            services.AddDbContext<PizzaContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Pizza")));
+            //services.AddDbContext<PizzaContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("Pizza")));
 
             services.AddControllersWithViews();
 
