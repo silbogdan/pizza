@@ -19,7 +19,7 @@ export const OrderPage = () => {
         ));
     }
 
-    const postOrder = (event) => {
+    const postOrder = async (event) => {
         event.preventDefault();
 
         

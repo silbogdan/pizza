@@ -9,7 +9,7 @@ namespace Pizza.Models
 {
     public partial class OrderInfo
     {
-        public int OrderId { get; set; }
+        public string OrderId { get; set; }
         public string PizzaType { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

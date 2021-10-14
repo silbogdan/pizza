@@ -45,7 +45,7 @@ namespace Pizza.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrderInfo(int id, OrderInfo orderInfo)
+        public async Task<IActionResult> PutOrderInfo(string id, OrderInfo orderInfo)
         {
             if (id != orderInfo.OrderId)
             {
@@ -101,7 +101,7 @@ namespace Pizza.Controllers
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<OrderInfo>> DeleteOrderInfo(int id)
+        public async Task<ActionResult<OrderInfo>> DeleteOrderInfo(string id)
         {
             var orderInfo = await _context.OrderInfo.FindAsync(id);
             if (orderInfo == null)
@@ -115,7 +115,7 @@ namespace Pizza.Controllers
             return orderInfo;
         }
 
-        private bool OrderInfoExists(int id)
+        private bool OrderInfoExists(string id)
         {
             return _context.OrderInfo.Any(e => e.OrderId == id);
         }
