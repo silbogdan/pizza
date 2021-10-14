@@ -10,7 +10,6 @@ namespace Pizza.Models
 {
     public partial class PizzaContext : DbContext
     {
-
         public PizzaContext(DbContextOptions<PizzaContext> options)
             : base(options)
         {
@@ -23,7 +22,7 @@ namespace Pizza.Models
             modelBuilder.Entity<OrderInfo>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Order_In__C3905BCF4CF76F8D");
+                    .HasName("PK__Order_In__C3905BCF549AD0D2");
 
                 entity.ToTable("Order_Info");
 
@@ -42,15 +41,16 @@ namespace Pizza.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.FirstName)
+                    .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.LastName)
+                    .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Options)
-                    .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
