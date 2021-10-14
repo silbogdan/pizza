@@ -10,9 +10,6 @@ namespace Pizza.Models
 {
     public partial class PizzaContext : DbContext
     {
-        public PizzaContext()
-        {
-        }
 
         public PizzaContext(DbContextOptions<PizzaContext> options)
             : base(options)
@@ -20,14 +17,6 @@ namespace Pizza.Models
         }
 
         public virtual DbSet<OrderInfo> OrderInfo { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Name=ConnectionStrings:Pizza");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
