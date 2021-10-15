@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import './OrderPage.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const OrderPage = () => {
     const [order, setOrder] = useState({
@@ -41,6 +42,7 @@ export const OrderPage = () => {
 
     return (
         <div>
+            <Link to="/">Back to menu</Link>
             <form className='pizzaOrder'>
                 <h1>Order pizza:</h1>
                 <label for="pizzaType">Pizza type:</label>
