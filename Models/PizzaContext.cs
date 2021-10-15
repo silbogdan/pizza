@@ -10,6 +10,10 @@ namespace Pizza.Models
 {
     public partial class PizzaContext : DbContext
     {
+        public PizzaContext()
+        {
+        }
+
         public PizzaContext(DbContextOptions<PizzaContext> options)
             : base(options)
         {
@@ -17,12 +21,20 @@ namespace Pizza.Models
 
         public virtual DbSet<OrderInfo> OrderInfo { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Name=ConnectionStrings:Pizza");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrderInfo>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Order_In__C3905BCF549AD0D2");
+                    .HasName("PK__Order_In__C3905BCFFC9FD50D");
 
                 entity.ToTable("Order_Info");
 
