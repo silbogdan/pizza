@@ -10,21 +10,19 @@ import {
 
 const App = () => {
     return (
-        <>
-            <Router>
-                <Switch>
-                    <Route exact path="/">
-                        <Menu />
-                    </Route>
-                    <Route path="/order">
-                        <OrderPage />
-                    </Route>
-                    <Route path="/orderlist">
-                        <OrderList />
-                    </Route>
-                </Switch>
-            </Router>
-        </>
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <Menu />
+                </Route>
+                <Route path="/order">
+                    <OrderPage />
+                </Route>
+                <Route path="/orderlist">
+                    <OrderList />
+                </Route>
+            </Switch>
+        </Router>
     );
 };
 
