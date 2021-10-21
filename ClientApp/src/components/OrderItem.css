@@ -4,7 +4,7 @@
     gap: 8px;
     margin: 10px;
     padding: 20px;
-    background-color: #EDB183;
+    background-color: mediumseagreen;
     color: black;
 }
 
@@ -19,7 +19,7 @@
 
 .order-delete {
     color: white;
-    background-color: #F15152;
+    background-color: #C92504;
     border: none;
     padding: 5px;
 }

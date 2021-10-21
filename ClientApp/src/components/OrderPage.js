@@ -1,78 +1,70 @@
-﻿import React, { useState } from 'react';
-import './OrderPage.css';
-import axios from 'axios';
+﻿import axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './OrderPage.css';
+import '../custom.css';
 
 export const OrderPage = () => {
-    const [order, setOrder] = useState({
-        PizzaType: 'Quattro Formaggi',
-        FirstName: '',
-        LastName: '',
-        Phone: '',
-        Email: '',
-        DeliveryAddress: '',
-        Options: ''
-    });
+    const [firstName, setFirstName] = useState('');
+    const [pizzaType, setPizzaType] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [deliveryAddress, setDeliveryAddress] = useState('');
+    const [options, setOptions] = useState('');
 
-    const [orderStatus, setOrderStatus] = useState('');
-
-    const handleChange = (event, type) => {
-        const targetValue = event.target.value;
-        setOrder((order) => (
-            { ...order, [type]: targetValue }
-        ));
-    };
-
-    const postOrder = async (event) => {
+    const sendOrder = (event) => {
         event.preventDefault();
 
-        const response = await axios.post('/api/Orders', order);
-        setOrder({
-            PizzaType: 'Quattro Formaggi',
-            FirstName: '',
-            LastName: '',
-            Phone: '',
-            Email: '',
-            DeliveryAddress: '',
-            Options: ''
-        });
+        const order = {
+            pizzaType: pizzaType,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phone: phone,
+            deliveryAddress: deliveryAddress,
+            options: options
+        };
 
-        setOrderStatus('Order has been sent');
-    };
+        axios.post('/api/Orders', order);
+        setFirstName('');
+        setLastName('');
+        setPizzaType('');
+        setEmail('');
+        setPhone('');
+        setDeliveryAddress('');
+        setOptions('');
+    }
 
     return (
-        <div>
-            <Link to="/">Back to menu</Link>
-            <form className='pizzaOrder'>
-                <h1>Order pizza:</h1>
-                <label for="pizzaType">Pizza type:</label>
-                <select value={order.PizzaType} name="pizzaType" id="pizzaType" onChange={(event) => handleChange(event, 'PizzaType')}>
-                    <option value="Quattro Formaggi">Quattro Formaggi</option>
-                    <option value="Diavola">Diavola</option>
-                    <option value="Capriciosa">Capriciosa</option>
-                    <option value="Carnivora">Carnivora</option>
-                </select>
+        <>
+            <Link to="/" className="back-link">Back to menu</Link>
+            <div>
+                <form className="pizza-order">
+                    <label htmlFor="pizzaType">Pizza Type</label>
+                    <input id="pizzaType" value={pizzaType} onChange={(event) => setPizzaType(event.target.value)} />
 
-                <label for="firstName">First name:</label>
-                <input value={order.FirstName} id="firstName" type="text" onChange={(event) => handleChange(event, 'FirstName')}></input>
+                    <label htmlFor="firstName">First Name</label>
+                    <input id="firstName" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
 
-                <label for="lastName">Last name:</label>
-                <input value={order.LastName} id="lastName" type="text" onChange={(event) => handleChange(event, 'LastName')}></input>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input id="lastName" value={lastName} onChange={(event) => setLastName(event.target.value)} />
 
-                <label for="email">Email:</label>
-                <input value={order.Email} id="email" type="text" onChange={(event) => handleChange(event, 'Email')}></input>
+                    <label htmlFor="email">Email</label>
+                    <input id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
 
-                <label for="phone">Phone:</label>
-                <input value={order.Phone} id="phone" type="text" onChange={(event) => handleChange(event, 'Phone')}></input>
+                    <label htmlFor="phone">Phone</label>
+                    <input id="phone" value={phone} onChange={(event) => setPhone(event.target.value)} />
 
-                <label for="address">Address:</label>
-                <textarea value={order.DeliveryAddress} id="address" style={{ minHeight: '50px' }} type="text" onChange={(event) => handleChange(event, 'DeliveryAddress')}></textarea>
+                    <label htmlFor="deliveryAddress">Delivery Address</label>
+                    <input id="deliveryAddress" value={deliveryAddress} onChange={(event) => setDeliveryAddress(event.target.value)} />
 
-                <label for="options">Options:</label>
-                <textarea value={order.Options} id="options" style={{ minHeight: '50px' }} type="text" onChange={(event) => handleChange(event, 'Options')}></textarea>
-                <button className="orderButton" onClick={async (event) => await postOrder(event)}>Send order</button>
-            </form>
-            <h2 style={{ color: 'green' }}>{orderStatus}</h2>
-      </div>
+                    <label htmlFor="options">Options</label>
+                    <input id="options" value={options} onChange={(event) => setOptions(event.target.value)} />
+
+                    <button onClick={(event) => sendOrder(event)} className="order-button">Send order</button>
+                </form>
+            </div>
+        </>
     );
-}
+};

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { OrderItem } from './OrderItem';
 import { Link } from 'react-router-dom';
+import '../custom.css';
 
 export const OrderList = () => {
     const [orders, setOrders] = useState([]);
@@ -17,7 +18,7 @@ export const OrderList = () => {
 
     return (
         <>
-            <Link to="/">Back to menu</Link>
+            <Link to="/" className="back-link">Back to menu</Link>
             {
             orders.length > 0 ?
                 <ul style={{ padding: 0, listStyleType: 'none' }}>
