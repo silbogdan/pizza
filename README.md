@@ -11,6 +11,11 @@ It's purpose is to teach basic web concepts using <b>ASP .NET Core, React</b> an
 The app has been published to Azure and can be accessed [here](https://pizzaapp0.azurewebsites.net/).
 
 <details><summary>Workshop Cheat Sheet</summary><br/>
+ 
+ ***Scaffolding***
+ ```
+ Scaffold-DbContext "<ConnectionString>" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+ ```
 
  **OrdersController.cs**
  ```cs
