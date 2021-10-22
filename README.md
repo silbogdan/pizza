@@ -96,10 +96,10 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
   ```javascript
   <div>
     <Link to="/">Back to menu</Link>
-    <form className='pizzaOrder'>
+    <form className='pizza-order'>
         <h1>Order pizza:</h1>
         <label for="pizzaType">Pizza type:</label>
-        <select value={order.PizzaType} name="pizzaType" id="pizzaType" onChange={(event) => handleChange(event, 'PizzaType')}>
+        <select value={pizzaType} name="pizzaType" id="pizzaType" onChange={(event) => setPizzaType(event.target.value)}>
             <option value="Quattro Formaggi">Quattro Formaggi</option>
             <option value="Diavola">Diavola</option>
             <option value="Capriciosa">Capriciosa</option>
@@ -107,23 +107,23 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
         </select>
 
         <label for="firstName">First name:</label>
-        <input value={order.FirstName} id="firstName" type="text" onChange={(event) => handleChange(event, 'FirstName')}></input>
+        <input value={firstName} id="firstName" type="text" onChange={(event) => setFirstName(event.target.value)}></input>
 
         <label for="lastName">Last name:</label>
-        <input value={order.LastName} id="lastName" type="text" onChange={(event) => handleChange(event, 'LastName')}></input>
+        <input value={lastName} id="lastName" type="text" onChange={(event) => setLastName(event.target.value)}></input>
 
         <label for="email">Email:</label>
-        <input value={order.Email} id="email" type="text" onChange={(event) => handleChange(event, 'Email')}></input>
+        <input value={email} id="email" type="text" onChange={(event) => setEmail(event.target.value)}></input>
 
         <label for="phone">Phone:</label>
-        <input value={order.Phone} id="phone" type="text" onChange={(event) => handleChange(event, 'Phone')}></input>
+        <input value={phone} id="phone" type="text" onChange={(event) => setPhone(event.target.value)}></input>
 
         <label for="address">Address:</label>
-        <textarea value={order.DeliveryAddress} id="address" style={{ minHeight: '50px' }} type="text" onChange={(event) => handleChange(event, 'DeliveryAddress')}></textarea>
+        <textarea value={deliveryAddress} id="address" style={{ minHeight: '50px' }} type="text" onChange={(event) => setDeliveryAddress(event.target.value)}></textarea>
 
         <label for="options">Options:</label>
-        <textarea value={order.Options} id="options" style={{ minHeight: '50px' }} type="text" onChange={(event) => handleChange(event, 'Options')}></textarea>
-        <button className="orderButton" onClick={async (event) => await postOrder(event)}>Send order</button>
+        <textarea value={options} id="options" style={{ minHeight: '50px' }} type="text" onChange={(event) => setOptions(event.target.value)}></textarea>
+        <button className="order-button" onClick={async (event) => await postOrder(event)}>Send order</button>
     </form>
     <h2 style={{ color: 'green' }}>{orderStatus}</h2>
   </div>
@@ -131,7 +131,7 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
   
   **OrderPage.css**
   ```css
-  .pizzaOrder {
+  .pizza-order {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -145,7 +145,7 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
       border-radius: 6px;
   }
 
-  .orderButton {
+  .order-button {
       margin-top: 15px;
       height: 50px;
       color: white;
