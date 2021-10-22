@@ -12,7 +12,7 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
 
 <details><summary>Workshop Cheat Sheet</summary><br/>
  
- ***Scaffolding***
+ **Scaffolding**
  ```
  Scaffold-DbContext "<ConnectionString>" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
  ```
