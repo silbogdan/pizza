@@ -155,6 +155,34 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
   }
   ```
   
+  **OrderList.js**
+  ```javascript
+  <>
+    <Link to="/" className="back-link">Back to menu</Link>
+    {
+    orders.length > 0 ?
+        <ul style={{ padding: 0, listStyleType: 'none' }}>
+            {
+                orders.map((order) => <li>
+                    <OrderItem
+                        id={order.orderId}
+                        name={order.firstName + ' ' + order.lastName}
+                        phone={order.phone}
+                        email={order.email}
+                        address={order.deliveryAddress}
+                        item={order.pizzaType}
+                        options={order.options}
+                        getOrders={getOrders}
+                    />
+                </li>)
+            }
+        </ul >
+        :
+        <h1>No orders registered</h1>
+      }
+  </>
+  ```
+  
   **OrderItem.js**
   ```javascript
   <div className="item-container">
