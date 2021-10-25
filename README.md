@@ -14,7 +14,11 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
  
  **Scaffolding**
  ```
- Scaffold-DbContext "<ConnectionString>" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+ dotnet tool install --global dotnet-ef
+ ```
+ 
+ ```
+ dotnet ef dbcontext scaffold "<Connection String>" Microsoft.EntityFrameworkCore.SqlServer -o Models
  ```
 
  **OrdersController.cs**
