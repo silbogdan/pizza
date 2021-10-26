@@ -187,6 +187,35 @@ The app has been published to Azure and can be accessed [here](https://pizzaapp0
   </>
   ```
   
+  **OrderList.css**
+  ```javascript
+  .item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #EDB183;
+    color: black;
+  }
+
+  .item-label {
+      color: #F4D8CD;
+      padding-right: 8px;
+  }
+
+  .item-header {
+      color: #3a2e39;
+  }
+
+  .order-delete {
+      color: white;
+      background-color: #F15152;
+      border: none;
+      padding: 5px;
+  }
+  ```
+  
   **OrderItem.js**
   ```javascript
   <div className="item-container">
